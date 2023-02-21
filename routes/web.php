@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JsonController;
 use App\Http\Controllers\CKeditorController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,9 @@ Route::post('ckeditor/upload',[CKeditorController::class,'upload'])->name('ckedi
 //chart in pdf
 Route::get('preview', [PDFController::class,'preview']);
 Route::get('download', [PDFController::class,'download'])->name('download');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('user', UserController::class);
